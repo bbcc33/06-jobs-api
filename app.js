@@ -27,6 +27,12 @@ app.use(express.json());
 app.use(helmet())
 app.use(cors())
 app.use(xss())
+app.use(rateLimiter({ windows: 60 * 1000, max: 60 }))
+
+// app.get('/', (req, res) => {
+  // res.send('jobs api')
+// })
+app.use(express.static("public"));
 
 
 //connectDB
